@@ -7,4 +7,4 @@ Let $kG$ be the group algebra of $G$ over a field $k$. $kG \cong kS_{n}$ since$G
 
 We compute the idempotents in $kS_n$ and pull them back to $kG$ along the isomorphism. 
 
-We then compute the Groebner bases for these noncommutative polynomials using GAP's GBNP package [https://www.gap-system.org/Packages/gbnp.html].
+We then compute the Groebner bases for these noncommutative polynomials using GAP's [GBNP package](https://www.gap-system.org/Packages/gbnp.html).
