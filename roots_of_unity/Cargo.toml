@@ -1,0 +1,7 @@
+[package]
+name = "roots_of_unity"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+reikna = "0.12.3"
