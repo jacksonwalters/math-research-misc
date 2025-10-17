@@ -1,0 +1,15 @@
+The curve y^2=x^3+x+1
+
+*read Silverman, pg. 66 re: isogenies
+
+*no isogeny between E(F_2) and E(F_7) because E(F_2) is not smooth/elliptic
+
+Q: Can there be a *morphism of curves* defined over different fields? Probably not.
+
+*pg. 13 for def of morphism btwn projective spaces. pg. 19 for map between curves
+
+Def: Let C be a curve, let V \subset P^N be a variety, let P \in C be a smooth point, and let \phi: C —> V be a rational map. Then \phi is regular at P. In particular, if C is smooth, then \phi is a morphism.
+
+*Q: can we pull group structure of E(F_7) back to the singular curve over F_2?
+
+*Q: does E^*(F_q1) admit a map to E(F_q2) where q1=2^m and q2=7^n as abelian groups where E* denotes the curve with singular points omitted?
