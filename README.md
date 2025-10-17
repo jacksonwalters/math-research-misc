@@ -15,3 +15,11 @@ We then compute the Groebner bases for these noncommutative polynomials using GA
 ## fock space
 
 Calculations involving the infinite dimensional Fock space associated to the symmetric group in Sage.
+
+## number theory
+
+Rust code to compute roots of unity in finite field, Chinese remainder theorem.
+
+## graphs
+
+Using the extended Cholesky decomposition, we could in principle factor any adjacency matrix $A$ as $UU^\ast$ since $A$ is symmetric.
