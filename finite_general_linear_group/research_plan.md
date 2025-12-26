@@ -50,6 +50,7 @@ A = -E(8)-E(8)^3
 - GAP appears to be not looking up the data, but rather computing conjugacy classes of the matrix group, then using character theory to just derive the entire table from scratch without knowing much about the actual representations or Greene's theory
 - as for Greene's theory, it only computes the characters, and doesn't actually compute the representations
 - it sounds like this may just be hard, or like people have either been avoiding this or it requires extremely complicated techniques
+- it might be better to simply focus on implementing induced representations for now, and some sort of general class for finite group representations, or at least specific classes for these types of representations
 
 ## graph similarity over GL_n(F_q)
 
