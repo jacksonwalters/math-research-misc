@@ -45,6 +45,19 @@ A = -E(8)-E(8)^3
   = -Sqrt(-2) = -i2
 ```
 
+## representations of GL_n(F_q)
+
 - GAP appears to be not looking up the data, but rather computing conjugacy classes of the matrix group, then using character theory to just derive the entire table from scratch without knowing much about the actual representations or Greene's theory
 - as for Greene's theory, it only computes the characters, and doesn't actually compute the representations
 - it sounds like this may just be hard, or like people have either been avoiding this or it requires extremely complicated techniques
+
+## graph similarity over GL_n(F_q)
+
+- it's also interesting to consider more general matrices GL_n(F_q) as a generalization of permutation matrices, which are a subgroup S_n \subset GL_n(F_q)
+- since a graph has edge weights in {0,1}, these are in any field, so one can view the adjacency matrix of a graph as a symmetric matrix M in Mat_n(F_q)
+- then we can consider \sigma \in GL_n(F_q) such that \sigma . M_0 . \sigma^{-1} == M_1 for two adjacency matrices M_1, M_2
+- if M_0, M_1 are isomorphic as graphs, then some of the \sigma will be permutation matrices, i.e. their values will lie in {0,1} and row/column sums will be 1
+- to compute these, one needs to check that the rational canonical forms are equal. then to get one actual solution you need to compute the Jordan normal form for both M_0, M_1 to get the change-of-basis matrix
+- currently, there is no option to get the change-of-basis matrix with `rational_form*()`, and the Jordan canonical form fails for certain fields even when it should not
+- I believe these are bugs that will need to be addressed with Travis. ideally we should be able to just compute the rational canonical form and change-of-basis matrix successfully for any finite field
+- then, yes, computing the stabilizer is slow, so getting the entire set of similarity matrices is slow, but it might be instructive to look at this larger set of matrices. I think for permutation matrices it's generally only one (or two if you include the inverse) that make it work
