@@ -62,3 +62,7 @@ A = -E(8)-E(8)^3
 - currently, there is no option to get the change-of-basis matrix with `rational_form*()`, and the Jordan canonical form fails for certain fields even when it should not
 - I believe these are bugs that will need to be addressed with Travis. ideally we should be able to just compute the rational canonical form and change-of-basis matrix successfully for any finite field
 - then, yes, computing the stabilizer is slow, so getting the entire set of similarity matrices is slow, but it might be instructive to look at this larger set of matrices. I think for permutation matrices it's generally only one (or two if you include the inverse) that make it work
+
+## notes
+
+- https://github.com/sagemath/sage/issues/25902
