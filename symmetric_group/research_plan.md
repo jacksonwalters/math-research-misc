@@ -8,8 +8,10 @@
 ## actions
 
 - induced representations: code does not exist yet
+- restriction representation: code does not exist yet
 - construct the product of two representations: code does not exist yet
 
 ## status
 
-- used Claude to generate reasonable code for class InducedRepresentation
+- generated reasonable code for InducedRepresenation
+- ensure it's passing basic checks, add all tests and examples
