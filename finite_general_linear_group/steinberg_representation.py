@@ -1,3 +1,5 @@
+from sage.all import *
+
 F = GF(2)
 V = VectorSpace(F, 3)
 G = GL(3, GF(2))
@@ -114,7 +116,7 @@ v_A = apartment_cycle_from_g(g, edges, edge_index)
 print("apartment cycle v_A from random basis element g \in GL_3(F_2):", v_A)
 
 #verify this is actually a cycle by multiplying by boundary map
-print("\del * v_A"(boundary * v_A).is_zero())
+print("\del * v_A", (boundary * v_A).is_zero())
 
 print("Pretty print of apartment cycle v_A:")
 pretty_print_cycle(v_A,edges)
