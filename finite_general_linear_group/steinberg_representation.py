@@ -169,3 +169,18 @@ lhs = g_action_on_vector(g, g_action_on_vector(h, v0, edges, edge_index), edges,
 rhs = g_action_on_vector(g * h, v0, edges, edge_index)
 assert lhs == rhs, "G-action property failed!"
 print("G-action property verified: g(h(v0)) == (gh)(v0)")
+
+# explicitly construct and count the number of apartments up to orientation
+
+unique_apartments = set()
+
+for g in G:
+    cycle = apartment_cycle_from_g(g, edges, edge_index)  # e.g. a list of ±1
+    cycle_tuple = tuple(cycle)
+    neg_cycle_tuple = tuple(-x for x in cycle_tuple)
+
+    # Choose the lex smaller between cycle_tuple and its negation
+    canonical = min(cycle_tuple, neg_cycle_tuple)
+    unique_apartments.add(canonical)
+
+print(f"Number of unique apartments found: {len(unique_apartments)}")
