@@ -184,3 +184,59 @@ for g in G:
     unique_apartments.add(canonical)
 
 print(f"Number of unique apartments found: {len(unique_apartments)}")
+
+# construct the Weyl group of GL(3,2), isomorphic to S_3 as group of permutation matrices
+
+W = []
+
+from itertools import permutations
+for perm in permutations([0,1,2]):
+    # Create permutation matrix for this permutation
+    M = matrix(F, 3, 3, 0)
+    for i, p_i in enumerate(perm):
+        M[p_i, i] = 1  # place 1 at row p_i, col i (columns are basis vectors)
+    W.append(G(M))
+
+print(f"Weyl group constructed with {len(W)} elements.")
+
+# allow W to act on the set of apartments themselves
+
+def orbit(apartment, W, edges, edge_index):
+    orbit_set = set()
+    v = vector(CDF, apartment)
+    for g in W:
+        v_g = g_action_on_vector(g, v, edges, edge_index)
+        # Normalize orientation by choosing lex smaller with its negation
+        v_g_tuple = tuple(v_g)
+        neg_v_g_tuple = tuple(-x for x in v_g)
+        canonical = min(v_g_tuple, neg_v_g_tuple)
+        orbit_set.add(canonical)
+    return orbit_set
+
+orbits = []
+visited = set()
+
+for apt in unique_apartments:
+    if apt in visited:
+        continue
+    orb = orbit(apt, W, edges, edge_index)
+    orbits.append(orb)
+    visited.update(orb)
+
+print(f"Number of orbits under W: {len(orbits)}")
+
+# Optionally print size of orbits
+orbit_sizes = [len(o) for o in orbits]
+print("Orbit sizes:", orbit_sizes)
+
+# compute the dimension of the G-orbit span of a given apartment cycle v_A
+
+orbit_vectors = [g_action_on_vector(g, v_A, edges, edge_index) for g in G]
+
+# Stack all these vectors as rows of a matrix
+M = matrix(orbit_vectors)
+
+# Compute dimension of the span
+dim_span = M.rank()
+
+print(f"Dimension of the G-orbit span of v_A is {dim_span}")
