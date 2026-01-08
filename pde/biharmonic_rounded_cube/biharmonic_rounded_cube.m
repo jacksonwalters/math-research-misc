@@ -44,3 +44,26 @@ for i = 90:100
     lighting gouraud;
     camlight;
 end
+
+% Choose the mode index you want to analyze
+mode_idx = 95;  % for example
+
+% Visualize that mode with zero-level set
+figure;
+trisurf(F, V(:,1), V(:,2), V(:,3), U_bi(:,mode_idx), ...
+    'EdgeColor','none');
+axis equal off;
+colormap turbo;
+colorbar;
+title(['Biharmonic eigenmode ', num2str(mode_idx)]);
+lighting gouraud;
+camlight;
+hold on;
+
+% Extract zero-level points for this mode
+zeroPts = extract_zero_level_set(V, F, U_bi(:,mode_idx));
+
+% Plot zero-level set points as black dots
+plot3(zeroPts(:,1), zeroPts(:,2), zeroPts(:,3), 'k.', 'MarkerSize', 12);
+
+hold off;
