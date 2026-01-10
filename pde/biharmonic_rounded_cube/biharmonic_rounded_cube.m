@@ -1,7 +1,7 @@
 clear; clc; close all;
 
 % Parameters
-p = 8;          % rounding exponent (controls cube sharpness)
+p = 30;          % rounding exponent (controls cube sharpness)
 n = 80;         % mesh resolution
 k = 100;         % number of eigenmodes to compute
 
