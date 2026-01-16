@@ -263,6 +263,24 @@ for g in G:
     M = steinberg_matrix(g, basis)
     char[g] = M.trace()
 
+
+# print character values sorted by order and class size
+rows = []
+
+for C in G.conjugacy_classes():
+    g = C.representative()
+    rows.append({
+        "order": g.order(),
+        "size": len(C),
+        "value": int(abs(char[g])),   # cast away .0
+        "rep": g
+    })
+
+rows.sort(key=lambda r: (r["order"], r["size"]))
+
+for r in rows:
+    print(f"order {r['order']:2}, size {r['size']:3} : χ = {r['value']}")
+
 # compute inner product of character with itself
 inner = sum(abs(v)**2 for v in char.values()) / G.order()
 print("Inner product of character with itself:", inner)
