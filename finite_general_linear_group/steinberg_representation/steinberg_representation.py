@@ -240,3 +240,29 @@ M = matrix(orbit_vectors)
 dim_span = M.rank()
 
 print(f"Dimension of the G-orbit span of v_A is {dim_span}")
+
+# print kernel
+basis = ker.basis()
+
+# change base ring for kernel to complex double field
+ker_complex = ker.change_ring(CDF)
+
+# get the matrix representation of an element g in the Steinberg representation
+def steinberg_matrix(g, basis):
+    cols = []
+    for v in basis:
+        gv = g_action_on_vector(g, v, edges, edge_index)
+        coords = ker_complex.coordinates(gv)
+        cols.append(coords)
+    return matrix(CDF, cols).transpose()
+
+# compute character of representation explicitly
+print("Computing character of Steinberg representation...")
+char = {}
+for g in G:
+    M = steinberg_matrix(g, basis)
+    char[g] = M.trace()
+
+# compute inner product of character with itself
+inner = sum(abs(v)**2 for v in char.values()) / G.order()
+print("Inner product of character with itself:", inner)
